@@ -29,14 +29,18 @@
 .game-board-wrapper {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden; /* Default to hidden instead of auto */
+  overflow-x: hidden;
+  /* Default to hidden instead of auto */
   -webkit-overflow-scrolling: touch;
   margin-bottom: 15px;
   /* Hide scrollbar but keep functionality */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
   position: relative;
-  padding-bottom: 5px; /* Space for potential scrollbar */
+  padding-bottom: 5px;
+  /* Space for potential scrollbar */
 }
 
 /* Only enable scrolling when content is actually scrollable */
@@ -45,25 +49,32 @@
 }
 
 .game-board-wrapper::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 .game-board {
   display: grid;
   grid-template-rows: repeat(6, 1fr);
   gap: 5px;
-  width: max-content; /* Allow to grow beyond container if needed */
+  width: max-content;
+  /* Allow to grow beyond container if needed */
   margin: 0 auto;
   justify-content: center;
-  padding: 0 5px; /* Add padding for better visibility on edges */
+  padding: 0 5px;
+  /* Add padding for better visibility on edges */
 }
 
 /* For words of 6 or fewer letters, center the board and prevent scrolling */
 .game-board.short-word {
-  min-width: 100%; /* At least fill the container */
-  margin: 0 auto; /* Center the game board */
-  justify-content: center; /* Ensure tiles are centered */
-  width: auto; /* Reset width to let container determine size */
+  min-width: 100%;
+  /* At least fill the container */
+  margin: 0 auto;
+  /* Center the game board */
+  justify-content: center;
+  /* Ensure tiles are centered */
+  width: auto;
+  /* Reset width to let container determine size */
   max-width: 100%;
 }
 
@@ -77,7 +88,8 @@
 /* Adjust tile size for smaller screens with short words */
 @media (max-width: 350px) {
   .game-board.short-word .tile {
-    width: 38px; /* Slightly larger than the default mobile size */
+    width: 38px;
+    /* Slightly larger than the default mobile size */
     height: 38px;
     font-size: 1.3rem;
   }
@@ -86,7 +98,8 @@
 /* Center shorter words on larger screens */
 @media (min-width: 600px) {
   .game-board.short-word {
-    max-width: 600px; /* Limit width for better centering */
+    max-width: 600px;
+    /* Limit width for better centering */
     margin: 0 auto;
   }
 }
@@ -102,32 +115,44 @@
 }
 
 @keyframes shake {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0);
   }
-  20%, 60% {
+
+  20%,
+  60% {
     transform: translateX(-5px);
   }
-  40%, 80% {
+
+  40%,
+  80% {
     transform: translateX(5px);
   }
 }
 
 .tile {
-  width: 42px;
-  height: 42px;
-  border: 2px solid var(--border-color);
+  width: 52px;
+  height: 52px;
+  border: 2px solid var(--glass-border);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 900;
   text-transform: uppercase;
-  color: var(--tile-text-color);
-  background-color: var(--tile-bg);
-  transition: border-color 0.3s ease, background-color 0.3s ease,
-    color 0.3s ease;
+  color: var(--foreground);
+  background-color: var(--glass);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Outfit', sans-serif;
 }
+
+.tile:not(.correct):not(.present):not(.absent):not(.active-tile) {
+  backdrop-filter: blur(5px);
+}
+
 
 .space-tile {
   border: none;
@@ -135,8 +160,10 @@
   background-color: transparent !important;
   pointer-events: none;
   margin: 0 1px;
-  box-shadow: none !important; /* Never show box shadow on space tiles */
-  outline: none !important; /* Never show outline on space tiles */
+  box-shadow: none !important;
+  /* Never show box shadow on space tiles */
+  outline: none !important;
+  /* Never show outline on space tiles */
 }
 
 /* Space tiles should never be highlighted or treated as active */
@@ -158,18 +185,18 @@
   .wordle-container {
     padding: 0 0.25rem;
   }
-  
+
   .tile {
     width: 35px;
     height: 35px;
     font-size: 1.2rem;
     border-width: 1.5px;
   }
-  
+
   .game-board-wrapper {
     margin-bottom: 10px;
   }
-  
+
   .row {
     gap: 4px;
   }
@@ -286,18 +313,18 @@
   .keyboard {
     margin: 0.25rem auto;
   }
-  
+
   .keyboard-row {
     margin: 0.15rem 0;
     gap: 0.15rem;
   }
-  
+
   .key {
     height: 2.75rem;
     font-size: 0.7rem;
     padding: 0.15rem 0;
   }
-  
+
   .key.wide {
     font-size: 0.6rem;
   }
@@ -686,7 +713,8 @@
 }
 
 .wordle-container.mobile .key {
-  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+  -webkit-tap-highlight-color: transparent;
+  /* Remove tap highlight on iOS */
 }
 
 .wordle-container.mobile .key:active {
@@ -699,26 +727,29 @@
     padding-top: 3.5rem !important;
     padding-bottom: 1.5rem !important;
   }
-  
+
   .definition {
     font-size: 0.8rem;
     padding: 0.5rem;
     margin: 0.25rem 0 0.5rem;
   }
-  
+
   .title {
     font-size: 1.5rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .game-board {
     margin-bottom: 8px;
   }
 }
 
 /* Ensure buttons are easy to tap on mobile */
-.key, .modal-button, .nav-button {
-  min-height: 44px; /* Minimum tap target size recommended by WCAG */
+.key,
+.modal-button,
+.nav-button {
+  min-height: 44px;
+  /* Minimum tap target size recommended by WCAG */
 }
 
 /* Active tile styling for better visibility during typing */
@@ -749,13 +780,13 @@
 
 /* For very long words on mobile, add a hint that you can scroll horizontally */
 @media (max-width: 599px) {
-  
+
   /* Position scroll indicators to be visible over the gradients */
   .scroll-indicator.left {
     left: 8px;
     z-index: 30;
   }
-  
+
   .scroll-indicator.right {
     right: 8px;
     z-index: 30;
@@ -773,7 +804,8 @@
 
 /* Mobile scroll indicators */
 .scroll-indicator {
-  position: fixed; /* Stick to viewport */
+  position: fixed;
+  /* Stick to viewport */
   top: 45%;
   height: 60px;
   width: 18px;
@@ -784,12 +816,14 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  opacity: 0; /* Hide by default */
+  opacity: 0;
+  /* Hide by default */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   pointer-events: none;
   transition: opacity 0.3s ease;
   /* Align with game board height */
-  margin-top: -40px; /* Move up slightly to align with game board */
+  margin-top: -40px;
+  /* Move up slightly to align with game board */
 }
 
 /* Only show scroll indicators when content is actually scrollable AND on mobile */
@@ -876,10 +910,12 @@ html.dark-mode .scroll-indicator.prominent.right {
     transform: translateY(-50%) scale(1);
     opacity: 0.8;
   }
+
   50% {
     transform: translateY(-50%) scale(1.1);
     opacity: 1;
   }
+
   100% {
     transform: translateY(-50%) scale(1);
     opacity: 0.8;
@@ -891,10 +927,12 @@ html.dark-mode .scroll-indicator.prominent.right {
     transform: translateY(-50%) scale(1);
     opacity: 0.9;
   }
+
   50% {
     transform: translateY(-50%) scale(1.2);
     opacity: 1;
   }
+
   100% {
     transform: translateY(-50%) scale(1);
     opacity: 0.9;
@@ -903,15 +941,16 @@ html.dark-mode .scroll-indicator.prominent.right {
 
 /* Adjust indicators for scrollable area */
 @media (max-width: 599px) {
+
   /* Position scroll indicators to be visible over the gradients */
   .scroll-indicator.left {
     z-index: 1001;
   }
-  
+
   .scroll-indicator.right {
     z-index: 1001;
   }
-  
+
   /* Remove the existing gradients that might conflict with our indicators */
   .game-board-wrapper:after,
   .game-board-wrapper:before {
@@ -932,12 +971,12 @@ html.dark-mode .scroll-indicator.prominent.right {
     /* Center in the game board on larger screens */
     top: 50%;
   }
-  
+
   .scroll-indicator.left {
     left: calc(50% - 400px);
     right: auto;
   }
-  
+
   .scroll-indicator.right {
     right: calc(50% - 400px);
     left: auto;
@@ -948,15 +987,18 @@ html.dark-mode .scroll-indicator.prominent.right {
 @media (min-width: 600px) {
   .game-board-wrapper.is-scrollable {
     overflow-x: auto;
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+    scrollbar-width: none;
+    /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none;
+    /* Hide scrollbar in IE and Edge */
     position: relative;
   }
-  
+
   .game-board-wrapper.is-scrollable::-webkit-scrollbar {
-    display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+    display: none;
+    /* Hide scrollbar in Chrome, Safari, and Opera */
   }
-  
+
   /* Special styling for desktop scroll indicators */
   .scroll-indicator.desktop {
     position: fixed;
@@ -970,36 +1012,39 @@ html.dark-mode .scroll-indicator.prominent.right {
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    opacity: 0; /* Hide by default */
+    opacity: 0;
+    /* Hide by default */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     pointer-events: none;
     transition: opacity 0.2s ease;
     cursor: default;
   }
-  
+
   .scroll-indicator.desktop span {
     font-size: 1.5rem;
     line-height: 1;
     font-weight: 600;
   }
-  
+
   .game-board-wrapper.is-scrollable .scroll-indicator.desktop {
-    opacity: 0.4; /* Less prominent on desktop */
+    opacity: 0.4;
+    /* Less prominent on desktop */
   }
-  
+
   .game-board-wrapper.is-scrollable:hover .scroll-indicator.desktop {
-    opacity: 0.8; /* More visible on hover */
+    opacity: 0.8;
+    /* More visible on hover */
   }
-  
+
   /* Desktop arrow positions */
   .scroll-indicator.desktop.left {
     left: max(calc(50% - 350px - 30px), 10px);
   }
-  
+
   .scroll-indicator.desktop.right {
     right: max(calc(50% - 350px - 30px), 10px);
   }
-  
+
   /* Desktop dark mode adjustments */
   html.dark-mode .scroll-indicator.desktop {
     background-color: rgba(100, 100, 100, 0.8);
@@ -1015,7 +1060,8 @@ html.dark-mode .scroll-indicator.prominent.right {
 
 /* Specific styles for mobile scroll indicators */
 .scroll-indicator.mobile {
-  position: fixed; /* Stick to viewport */
+  position: fixed;
+  /* Stick to viewport */
   top: 45%;
   height: 60px;
   width: 18px;
@@ -1029,10 +1075,11 @@ html.dark-mode .scroll-indicator.prominent.right {
   .game-board-wrapper {
     scroll-behavior: smooth;
   }
-  
+
   /* Enhance scrolling experience with better spacing */
   .game-board {
-    padding: 0 2rem; /* Add more padding on desktop */
+    padding: 0 2rem;
+    /* Add more padding on desktop */
   }
 }
 
@@ -1044,6 +1091,7 @@ html.dark-mode .scroll-indicator.prominent.right {
 
 /* Desktop indicator hover and focus states */
 @media (min-width: 600px) {
+
   .scroll-indicator.desktop:hover,
   .scroll-indicator.desktop:focus {
     opacity: 0.9 !important;
@@ -1085,8 +1133,9 @@ html.dark-mode .scroll-indicator.prominent.right {
 }
 
 @media (min-width: 600px) {
+
   /* Only show scroll instruction on desktop when needed */
-  .game-board-wrapper.is-scrollable + .scroll-instruction {
+  .game-board-wrapper.is-scrollable+.scroll-instruction {
     display: block;
   }
 }

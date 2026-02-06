@@ -1,0 +1,132 @@
+.hub-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  background: radial-gradient(circle at top right, rgba(106, 170, 100, 0.1), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(52, 152, 219, 0.1), transparent 40%);
+}
+
+.hub-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.hub-header h1 {
+  font-size: 4rem;
+  background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.hub-header p {
+  font-size: 1.2rem;
+  color: #888;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.game-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 2rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.game-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 30px -10px var(--accent-color);
+}
+
+.game-emoji {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+.game-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.game-info p {
+  color: #888;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.game-card-glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.brainrot-meter-container {
+  margin-top: 5rem;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.meter-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.meter-label span {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.meter-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6aaa64, #3498db, #e74c3c);
+}
+
+@media (max-width: 768px) {
+  .hub-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .game-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+}

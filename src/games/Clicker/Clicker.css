@@ -1,0 +1,106 @@
+.clicker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.clicker-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.score-display {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 1rem;
+  color: #3498db;
+  letter-spacing: 4px;
+  margin-top: 0.5rem;
+}
+
+.main-clicker {
+  font-size: 12rem;
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.2));
+  transition: filter 0.2s;
+}
+
+.main-clicker:hover {
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.4));
+}
+
+.upgrades {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.upgrade-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.upgrade-btn:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #3498db;
+  transform: translateX(10px);
+}
+
+.upgrade-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.floating-text {
+  position: fixed;
+  pointer-events: none;
+  font-weight: 900;
+  font-size: 2rem;
+  color: #3498db;
+  z-index: 1000;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.back-button {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}

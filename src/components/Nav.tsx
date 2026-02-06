@@ -23,41 +23,41 @@ const Nav: React.FC<NavProps> = ({
   const handleThemeToggle = () => {
     const now = Date.now();
     const timeSinceLastToggle = now - lastToggleTime.current;
-    
+
     if (timeSinceLastToggle > 1500) {
       setToggleCount(1);
     } else {
       setToggleCount(prevCount => prevCount + 1);
     }
-    
+
     lastToggleTime.current = now;
-    
+
     if (toggleCount >= 10) {
       setFlashbangActive(true);
-      
+
       if (isSoundEnabled) {
         soundManager.play('flashbang');
       }
-      
+
       setToggleCount(0);
-      
+
       if (flashbangTimeoutRef.current) {
         clearTimeout(flashbangTimeoutRef.current);
       }
-      
+
       flashbangTimeoutRef.current = setTimeout(() => {
         setFlashbangActive(false);
       }, 5000);
     }
-    
+
     onThemeToggle();
   };
 
   return (
     <>
       {flashbangActive && (
-        <div 
-          className="flashbang-overlay" 
+        <div
+          className="flashbang-overlay"
           style={{
             position: 'fixed',
             top: 0,
@@ -72,33 +72,27 @@ const Nav: React.FC<NavProps> = ({
           }}
         />
       )}
-      <nav className="nav" role="navigation" aria-label="Main navigation">
-        <div className="nav-left">
-          <img src="/favico.png" alt="Word Tuah Logo" className="nav-logo" width={30} height={30}/>
-          <h1 className="nav-title">Word Tuah</h1>
+      <nav className="nav glass-card" style={{ margin: '1rem', padding: '0.75rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: '1rem', zIndex: 100 }}>
+        <div className="nav-left" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className="nav-logo" style={{ fontSize: '1.5rem' }}>🧠</div>
+          <h1 className="nav-title" style={{ fontSize: '1.25rem', margin: 0, background: 'linear-gradient(90deg, #6aaa64, #3498db)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Brainrot Game Center</h1>
         </div>
-        <div className="nav-right">
+        <div className="nav-right" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
           <motion.button
             className="nav-button"
             onClick={onSoundToggle}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.1, backgroundColor: 'var(--glass-hover)' }}
             whileTap={{ scale: 0.95 }}
-            aria-label={isSoundEnabled ? 'Disable sound' : 'Enable sound'}
-            aria-pressed={isSoundEnabled}
-            type="button"
+            style={{ padding: '0.5rem', borderRadius: '50%', background: 'var(--glass)', border: '1px solid var(--glass-border)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px' }}
           >
             {isSoundEnabled ? '🔊' : '🔇'}
           </motion.button>
           <motion.button
             className="nav-button"
             onClick={handleThemeToggle}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.1, backgroundColor: 'var(--glass-hover)' }}
             whileTap={{ scale: 0.95 }}
-            aria-label={
-              isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'
-            }
-            aria-pressed={isDarkMode}
-            type="button"
+            style={{ padding: '0.5rem', borderRadius: '50%', background: 'var(--glass)', border: '1px solid var(--glass-border)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px' }}
           >
             {isDarkMode ? '☀️' : '🌙'}
           </motion.button>

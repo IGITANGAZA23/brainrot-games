@@ -2,40 +2,30 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer">
+    <footer className="footer glass-card" style={{ margin: '2rem 1rem 1rem', padding: '1.5rem', textAlign: 'center' }}>
       <div className="footer-wrapper">
         <div className="footer-content">
-          <div className="footer-text">
-            Hey, I'm The Coding Sloth and I started this terrible website:
+          <div className="footer-text" style={{ color: '#888', marginBottom: '1rem' }}>
+            Curated by <span style={{ color: 'var(--secondary)', fontWeight: 'bold' }}>The Coding Sloth</span> for the ultimate rot.
           </div>
-          <nav className="footer-links" aria-label="Footer navigation">
-            <a
-              href="https://www.youtube.com/@TheCodingSloth"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link"
-              aria-label="YouTube channel"
-            >
-              YouTube
-            </a>
-            <a
-              href="https://slothbytes.beehiiv.com/subscribe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link"
-              aria-label="Newsletter subscription"
-            >
-              Newsletter
-            </a>
-            <a
-              href="https://github.com/The-CodingSloth/brainrot-games"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-link"
-              aria-label="GitHub repository"
-            >
-              GitHub
-            </a>
+          <nav className="footer-links" style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
+            {[
+              { name: 'YouTube', url: 'https://www.youtube.com/@TheCodingSloth' },
+              { name: 'Newsletter', url: 'https://slothbytes.beehiiv.com/subscribe' },
+              { name: 'GitHub', url: 'https://github.com/The-CodingSloth/brainrot-games' }
+            ].map(link => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#fff', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--secondary)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#fff')}
+              >
+                {link.name}
+              </a>
+            ))}
           </nav>
         </div>
       </div>
